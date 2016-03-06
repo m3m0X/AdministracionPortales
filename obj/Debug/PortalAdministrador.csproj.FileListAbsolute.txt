@@ -1,0 +1,37 @@
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalAdministracion\AdministracionPortales\bin\PortalTrabajadores.dll.config
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalAdministracion\AdministracionPortales\bin\PortalTrabajadores.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalAdministracion\AdministracionPortales\bin\PortalTrabajadores.pdb
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalAdministracion\AdministracionPortales\bin\Excel.4.5.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalAdministracion\AdministracionPortales\bin\ICSharpCode.SharpZipLib.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalAdministracion\AdministracionPortales\bin\itextsharp.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalAdministracion\AdministracionPortales\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalAdministracion\AdministracionPortales\bin\Excel.4.5.pdb
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalAdministracion\AdministracionPortales\bin\itextsharp.xml
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalAdministracion\AdministracionPortales\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalAdministracion\AdministracionPortales\obj\Debug\PortalAdministrador.csproj.ResolveComReference.cache
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalAdministracion\AdministracionPortales\obj\Debug\PortalTrabajadores.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalAdministracion\AdministracionPortales\obj\Debug\PortalTrabajadores.pdb
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\AdministracionPortales\bin\PortalTrabajadores.dll.config
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\AdministracionPortales\bin\PortalTrabajadores.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\AdministracionPortales\bin\PortalTrabajadores.pdb
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\AdministracionPortales\bin\itextsharp.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\AdministracionPortales\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\AdministracionPortales\bin\itextsharp.xml
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\AdministracionPortales\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\AdministracionPortales\obj\Debug\PortalAdministrador.csproj.ResolveComReference.cache
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\AdministracionPortales\obj\Debug\PortalTrabajadores.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\AdministracionPortales\obj\Debug\PortalTrabajadores.pdb
+D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\bin\PortalTrabajadores.dll.config
+D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\bin\PortalTrabajadores.dll
+D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\bin\PortalTrabajadores.pdb
+D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\bin\Excel.4.5.dll
+D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\bin\ICSharpCode.SharpZipLib.dll
+D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\bin\itextsharp.dll
+D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\bin\Microsoft.QualityTools.Testing.Fakes.dll
+D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\bin\Excel.4.5.pdb
+D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\bin\itextsharp.xml
+D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\obj\Debug\PortalAdministrador.csproj.ResolveComReference.cache
+D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\obj\Debug\PortalTrabajadores.dll
+D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\obj\Debug\PortalTrabajadores.pdb
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalAdministracion\AdministracionPortales\obj\Debug\PortalAdministrador.csprojResolveAssemblyReference.cache
