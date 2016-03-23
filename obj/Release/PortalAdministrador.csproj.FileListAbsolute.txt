@@ -37,3 +37,15 @@ D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\obj\Release\Port
 D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\obj\Release\PortalAdministrador.csproj.ResolveComReference.cache
 D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\obj\Release\PortalTrabajadores.dll
 D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\obj\Release\PortalTrabajadores.pdb
+D:\Sumi\AdministracionPortales\bin\PortalTrabajadores.dll.config
+D:\Sumi\AdministracionPortales\bin\PortalTrabajadores.dll
+D:\Sumi\AdministracionPortales\bin\PortalTrabajadores.pdb
+D:\Sumi\AdministracionPortales\bin\itextsharp.dll
+D:\Sumi\AdministracionPortales\bin\Microsoft.QualityTools.Testing.Fakes.dll
+D:\Sumi\AdministracionPortales\bin\Excel.4.5.pdb
+D:\Sumi\AdministracionPortales\bin\itextsharp.xml
+D:\Sumi\AdministracionPortales\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+D:\Sumi\AdministracionPortales\obj\Release\PortalAdministrador.csprojResolveAssemblyReference.cache
+D:\Sumi\AdministracionPortales\obj\Release\PortalAdministrador.csproj.ResolveComReference.cache
+D:\Sumi\AdministracionPortales\obj\Release\PortalTrabajadores.dll
+D:\Sumi\AdministracionPortales\obj\Release\PortalTrabajadores.pdb
