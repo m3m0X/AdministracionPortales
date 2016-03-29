@@ -16,7 +16,8 @@ namespace PortalTrabajadores.Portal
     {
         string Cn = ConfigurationManager.ConnectionStrings["trabajadoresConnectionString"].ConnectionString.ToString();
         string ruta = ConfigurationManager.AppSettings["RepositorioPDF"].ToString();
-
+        string bd1 = ConfigurationManager.AppSettings["BD1"].ToString();
+        string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
 
         #region Definicion de los Metodos de la Clase
 
@@ -39,7 +40,7 @@ namespace PortalTrabajadores.Portal
                     MySqlConnection MySqlCn = new MySqlConnection(Cn);
                     try
                     {
-                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM basica_trabajador.Options_Menu WHERE url = 'IngresoRetencion.aspx' AND Tipoportal = 'A'", MySqlCn);
+                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM " + bd1 + ".Options_Menu WHERE url = 'IngresoRetencion.aspx' AND Tipoportal = 'A'", MySqlCn);
                         MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                         DataSet dsDataSet = new DataSet();
                         DataTable dtDataTable = null;
@@ -73,7 +74,7 @@ namespace PortalTrabajadores.Portal
 
             MySqlCn.Open();
 
-            MySqlCommand deleteCommand = new MySqlCommand("DELETE from trabajadores.ingretenciones", MySqlCn);
+            MySqlCommand deleteCommand = new MySqlCommand("DELETE from " + bd2 + ".ingretenciones", MySqlCn);
 
             deleteCommand.ExecuteNonQuery();
 
@@ -123,7 +124,7 @@ namespace PortalTrabajadores.Portal
                     {
                         MySqlCn.Open();
 
-                        MySqlCommand scSqlCommand = new MySqlCommand("INSERT INTO trabajadores.ingretenciones " +
+                        MySqlCommand scSqlCommand = new MySqlCommand("INSERT INTO " + bd2 + ".ingretenciones " +
                                                                      "VALUES (null,'" + resultado.Tables[0].Rows[x].ItemArray[0].ToString() + "','" +
                                                                                   resultado.Tables[0].Rows[x].ItemArray[1].ToString() + "','" +
                                                                                   resultado.Tables[0].Rows[x].ItemArray[2].ToString() + "','" +

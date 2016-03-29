@@ -14,6 +14,8 @@ namespace PortalTrabajadores.Portal
     public partial class CambioContrasenaST : System.Web.UI.Page
     {
         string Cn = ConfigurationManager.ConnectionStrings["trabajadoresConnectionString"].ConnectionString.ToString();
+        string bd1 = ConfigurationManager.AppSettings["BD1"].ToString();
+        string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
 
         #region Definicion de los Metodos de la Clase
 
@@ -37,7 +39,7 @@ namespace PortalTrabajadores.Portal
                     {
                         DataTable dtDataTable = null;
                         Conexion.AbrirCnMysql();
-                        dtDataTable = Conexion.ConsultarRegistros("SELECT descripcion FROM basica_trabajador.Options_Menu WHERE url = 'CambioContrasenaST.aspx' AND Tipoportal = 'A'");
+                        dtDataTable = Conexion.ConsultarRegistros("SELECT descripcion FROM " + bd1 + ".Options_Menu WHERE url = 'CambioContrasenaST.aspx' AND Tipoportal = 'A'");
                         if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                         {
                             this.lblTitulo.Text = dtDataTable.Rows[0].ItemArray[0].ToString();
@@ -75,7 +77,7 @@ namespace PortalTrabajadores.Portal
                 else
                 {
                     Conexion.AbrirCnMysql();
-                    MySqlCommand cmd = new MySqlCommand("trabajadores.sp_CambioContrasena", Conexion.ObtenerCnMysql());
+                    MySqlCommand cmd = new MySqlCommand(bd2 + ".sp_CambioContrasena", Conexion.ObtenerCnMysql());
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@cedula", txtuser.Text);
                     cmd.Parameters.AddWithValue("@empresa", "ST");

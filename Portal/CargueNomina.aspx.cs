@@ -16,6 +16,8 @@ namespace PortalTrabajadores.Portal
     {
         string Cn = ConfigurationManager.ConnectionStrings["trabajadoresConnectionString"].ConnectionString.ToString();
         string ruta = ConfigurationManager.AppSettings["RutaFisica"].ToString();
+        string bd1 = ConfigurationManager.AppSettings["BD1"].ToString();
+        string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
 
         #region Definicion de los Metodos de la Clase
 
@@ -40,7 +42,7 @@ namespace PortalTrabajadores.Portal
                     {
                         DataTable dtDataTable = null;
                         Conexion.AbrirCnMysql();
-                        dtDataTable = Conexion.ConsultarRegistros("SELECT descripcion FROM basica_trabajador.Options_Menu WHERE url = 'CargueNomina.aspx' AND TipoPortal = 'A'");
+                        dtDataTable = Conexion.ConsultarRegistros("SELECT descripcion FROM " + bd1 + ".Options_Menu WHERE url = 'CargueNomina.aspx' AND TipoPortal = 'A'");
                         if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                         {
                             this.lblTitulo.Text = dtDataTable.Rows[0].ItemArray[0].ToString();
@@ -85,17 +87,17 @@ namespace PortalTrabajadores.Portal
                     string cmdmysql; int Registros = 0;
                     Conexion.AbrirCnMysql();
                     //Trunca la tabla conceptonominatemp antes de insertar los datos
-                    Conexion.EjecutarComando("truncate table basica_trabajador.conceptonominatemp");
-                    cmdmysql = "LOAD DATA LOCAL INFILE '" + ruta + "conceptonominatemp.txt" + "' INTO TABLE basica_trabajador.conceptonominatemp fields terminated by '|' ESCAPED BY " + @"'\\'" + " enclosed by '' LINES TERMINATED BY " + "'\\r\\n';";
+                    Conexion.EjecutarComando("truncate table " + bd1 + ".conceptonominatemp");
+                    cmdmysql = "LOAD DATA LOCAL INFILE '" + ruta + "conceptonominatemp.txt" + "' INTO TABLE " + bd1 + ".conceptonominatemp fields terminated by '|' ESCAPED BY " + @"'\\'" + " enclosed by '' LINES TERMINATED BY " + "'\\r\\n';";
                     Registros = Conexion.EjecutarComandoCon(cmdmysql);
 
                     //Inserta los conceptonomina nuevos en la tabla conceptonomina
-                    cmdmysql = "insert into basica_trabajador.conceptonomina select idConceptoNomina,Empresas_idempresa,Descripcion_Concepto from basica_trabajador.conceptonominatemp T3 where not exists(select 1 from basica_trabajador.conceptonomina E where E.idConceptoNomina = T3.idConceptoNomina and E.Empresas_idEmpresa = T3.Empresas_idEmpresa)";
+                    cmdmysql = "insert into basica_trabajador.conceptonomina select idConceptoNomina,Empresas_idempresa,Descripcion_Concepto from " + bd1 + ".conceptonominatemp T3 where not exists(select 1 from basica_trabajador.conceptonomina E where E.idConceptoNomina = T3.idConceptoNomina and E.Empresas_idEmpresa = T3.Empresas_idEmpresa)";
                     int RegistrosEmple = Conexion.EjecutarComandoCon(cmdmysql);
 
                     //Trunca la tabla resumennomina antes de insertar los datos
-                    Conexion.EjecutarComando("truncate table trabajadores.resumennomina");
-                    cmdmysql = "LOAD DATA LOCAL INFILE '" + ruta + "resumennomina.txt" + "' INTO TABLE trabajadores.resumennomina fields terminated by '|' ESCAPED BY " + @"'\\'" + " enclosed by '' LINES TERMINATED BY " + "'\\r\\n';";
+                    Conexion.EjecutarComando("truncate table " + bd2 + ".resumennomina");
+                    cmdmysql = "LOAD DATA LOCAL INFILE '" + ruta + "resumennomina.txt" + "' INTO TABLE " + bd2 + ".resumennomina fields terminated by '|' ESCAPED BY " + @"'\\'" + " enclosed by '' LINES TERMINATED BY " + "'\\r\\n';";
                     Registros = Conexion.EjecutarComandoCon(cmdmysql);
 
                     MensajeError("Se Cargaron " + Registros + " Registros en la Base de Datos para el Cargue de Nomina");

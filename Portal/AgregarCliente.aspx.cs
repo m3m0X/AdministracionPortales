@@ -14,6 +14,8 @@ namespace PortalTrabajadores.Portal
     public partial class AgregarCliente : System.Web.UI.Page
     {
         string Cn = ConfigurationManager.ConnectionStrings["trabajadoresConnectionString"].ConnectionString.ToString();
+        string bd1 = ConfigurationManager.AppSettings["BD1"].ToString();
+        string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
         int bandera = 1;
 
         #region Definicion de los Metodos de la Clase
@@ -38,7 +40,7 @@ namespace PortalTrabajadores.Portal
                     {
                         txtuser.Focus();
 
-                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM basica_trabajador.Options_Menu WHERE url = 'AgregarCliente.aspx' and Tipoportal = 'A'", Conexion.ObtenerCnMysql());
+                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM " + bd1 + ".Options_Menu WHERE url = 'AgregarCliente.aspx' and Tipoportal = 'A'", Conexion.ObtenerCnMysql());
                         MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                         DataSet dsDataSet = new DataSet();
                         DataTable dtDataTable = null;
@@ -162,7 +164,7 @@ namespace PortalTrabajadores.Portal
             try
             {
                 Conexion.AbrirCnMysql();
-                MySqlCommand cmd = new MySqlCommand("trabajadores.sp_ConsultaTerceros", Conexion.ObtenerCnMysql());
+                MySqlCommand cmd = new MySqlCommand(bd2 + ".sp_ConsultaTerceros", Conexion.ObtenerCnMysql());
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@NitTercero", Nit_tercero);
                 MySqlDataReader rd = cmd.ExecuteReader();
@@ -231,7 +233,7 @@ namespace PortalTrabajadores.Portal
                 CnMysql Conexion = new CnMysql(Cn);
                 try
                 {
-                    MySqlCommand scSqlCommand = new MySqlCommand("SELECT Contrasena_tercero FROM trabajadores.terceros where Nit_tercero =" + txtuser.Text, Conexion.ObtenerCnMysql());
+                    MySqlCommand scSqlCommand = new MySqlCommand("SELECT Contrasena_tercero FROM " + bd2 + ".terceros where Nit_tercero =" + txtuser.Text, Conexion.ObtenerCnMysql());
                     MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                     DataSet dsDataSet = new DataSet();
                     DataTable dtDataTable = null;
@@ -354,7 +356,7 @@ namespace PortalTrabajadores.Portal
             try
             {
                 Conexion.AbrirCnMysql();
-                MySqlCommand cmd = new MySqlCommand("trabajadores.sp_ActualizaTercero", Conexion.ObtenerCnMysql());
+                MySqlCommand cmd = new MySqlCommand(bd2 + ".sp_ActualizaTercero", Conexion.ObtenerCnMysql());
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@NitTercero", TxtDoc.Text.ToUpper());
                 cmd.Parameters.AddWithValue("@nombreTercero", TxtNombres.Text.ToUpper());
@@ -442,7 +444,7 @@ namespace PortalTrabajadores.Portal
             try
             {
                 Conexion.AbrirCnMysql();
-                MySqlCommand cmd = new MySqlCommand("trabajadores.sp_CrearTercero", Conexion.ObtenerCnMysql());
+                MySqlCommand cmd = new MySqlCommand(bd2 + ".sp_CrearTercero", Conexion.ObtenerCnMysql());
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@NitTercero", TxtDoc.Text);
                 cmd.Parameters.AddWithValue("@nombreTercero", TxtNombres.Text);

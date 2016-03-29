@@ -45,3 +45,13 @@ D:\Sumi\AdministracionPortales\bin\es\Microsoft.QualityTools.Testing.Fakes.resou
 D:\Sumi\AdministracionPortales\obj\Debug\PortalAdministrador.csproj.ResolveComReference.cache
 D:\Sumi\AdministracionPortales\obj\Debug\PortalTrabajadores.dll
 D:\Sumi\AdministracionPortales\obj\Debug\PortalTrabajadores.pdb
+D:\SUMI\ProyectoGIT\AdministracionPortales\bin\PortalTrabajadores.dll.config
+D:\SUMI\ProyectoGIT\AdministracionPortales\bin\PortalTrabajadores.dll
+D:\SUMI\ProyectoGIT\AdministracionPortales\bin\PortalTrabajadores.pdb
+D:\SUMI\ProyectoGIT\AdministracionPortales\bin\itextsharp.dll
+D:\SUMI\ProyectoGIT\AdministracionPortales\bin\Microsoft.QualityTools.Testing.Fakes.dll
+D:\SUMI\ProyectoGIT\AdministracionPortales\bin\itextsharp.xml
+D:\SUMI\ProyectoGIT\AdministracionPortales\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+D:\SUMI\ProyectoGIT\AdministracionPortales\obj\Debug\PortalAdministrador.csproj.ResolveComReference.cache
+D:\SUMI\ProyectoGIT\AdministracionPortales\obj\Debug\PortalTrabajadores.dll
+D:\SUMI\ProyectoGIT\AdministracionPortales\obj\Debug\PortalTrabajadores.pdb

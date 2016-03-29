@@ -14,6 +14,8 @@ namespace PortalTrabajadores.Portal
     public partial class ModificarProyecto : System.Web.UI.Page
     {
         string Cn = ConfigurationManager.ConnectionStrings["trabajadoresConnectionString"].ConnectionString.ToString();
+        string bd1 = ConfigurationManager.AppSettings["BD1"].ToString();
+        string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
 
         #region Definicion de los Metodos de la Clase
 
@@ -37,7 +39,7 @@ namespace PortalTrabajadores.Portal
                     {
                         txtuser.Focus();
 
-                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM basica_trabajador.Options_Menu WHERE url = 'ModificarProyecto.aspx' and Tipoportal = 'A'", Conexion.ObtenerCnMysql());
+                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM " + bd1 + ".Options_Menu WHERE url = 'ModificarProyecto.aspx' and Tipoportal = 'A'", Conexion.ObtenerCnMysql());
                         MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                         DataSet dsDataSet = new DataSet();
                         DataTable dtDataTable = null;
@@ -153,7 +155,7 @@ namespace PortalTrabajadores.Portal
             try
             {
                 Conexion.AbrirCnMysql();
-                MySqlCommand cmd = new MySqlCommand("trabajadores.sp_ConsultaCompanias", Conexion.ObtenerCnMysql());
+                MySqlCommand cmd = new MySqlCommand(bd2 + ".sp_ConsultaCompanias", Conexion.ObtenerCnMysql());
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@idCompania", CodCompania);
                 cmd.Parameters.AddWithValue("@empresa", empresa);
@@ -252,7 +254,7 @@ namespace PortalTrabajadores.Portal
             try
             {
                 Conexion.AbrirCnMysql();
-                MySqlCommand cmd = new MySqlCommand("trabajadores.sp_ActualizaCompania", Conexion.ObtenerCnMysql());
+                MySqlCommand cmd = new MySqlCommand(bd2 + ".sp_ActualizaCompania", Conexion.ObtenerCnMysql());
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@idCompania", idcompania);
                 cmd.Parameters.AddWithValue("@idEmpresa", idempresa);

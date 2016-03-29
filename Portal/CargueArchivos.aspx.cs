@@ -16,6 +16,8 @@ namespace PortalTrabajadores.Portal
     {
         string Cn = ConfigurationManager.ConnectionStrings["trabajadoresConnectionString"].ConnectionString.ToString();
         string ruta = ConfigurationManager.AppSettings["RepositorioPDF"].ToString();
+        string bd1 = ConfigurationManager.AppSettings["BD1"].ToString();
+        string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
         string Combine = "";
 
         #region Definicion de los Metodos de la Clase
@@ -43,7 +45,7 @@ namespace PortalTrabajadores.Portal
                     CnMysql Conexion = new CnMysql(Cn);
                     try
                     {
-                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM basica_trabajador.Options_Menu WHERE url = 'CargueArchivos.aspx' AND TipoPortal = 'A'", Conexion.ObtenerCnMysql());
+                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM " + bd1 + ".Options_Menu WHERE url = 'CargueArchivos.aspx' AND TipoPortal = 'A'", Conexion.ObtenerCnMysql());
                         MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                         DataSet dsDataSet = new DataSet();
                         DataTable dtDataTable = null;
@@ -177,7 +179,7 @@ namespace PortalTrabajadores.Portal
             try
             {
                 Conexion.AbrirCnMysql();
-                MySqlCommand cmd = new MySqlCommand("trabajadores.sp_TruncarCargues", Conexion.ObtenerCnMysql());
+                MySqlCommand cmd = new MySqlCommand(bd2 + ".sp_TruncarCargues", Conexion.ObtenerCnMysql());
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 //Cuando el tipo de cargue es igual a 1 = Cesantias; 2 = Fondo; 3 = SeguridadSocial
@@ -221,7 +223,7 @@ namespace PortalTrabajadores.Portal
             try
             {
                 Conexion.AbrirCnMysql();
-                MySqlCommand cmd = new MySqlCommand("trabajadores.sp_CarguesPDF", Conexion.ObtenerCnMysql());
+                MySqlCommand cmd = new MySqlCommand(bd2 + ".sp_CarguesPDF", Conexion.ObtenerCnMysql());
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@idEmpleado", id_Empleado);
                 cmd.Parameters.AddWithValue("@Mes", mes);

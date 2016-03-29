@@ -17,6 +17,8 @@ namespace PortalTrabajadores.Portal
     {
         string Cn = ConfigurationManager.ConnectionStrings["trabajadoresConnectionString"].ConnectionString.ToString();
         string ruta = ConfigurationManager.AppSettings["RutaFisica"].ToString();
+        string bd1 = ConfigurationManager.AppSettings["BD1"].ToString();
+        string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
 
         #region Definicion de los Metodos de la Clase
 
@@ -40,7 +42,7 @@ namespace PortalTrabajadores.Portal
                     {
                         DataTable dtDataTable = null;
                         Conexion.AbrirCnMysql();
-                        dtDataTable = Conexion.ConsultarRegistros("SELECT descripcion FROM basica_trabajador.Options_Menu WHERE url = 'CargueEmpleados.aspx' AND TipoPortal = 'A'");
+                        dtDataTable = Conexion.ConsultarRegistros("SELECT descripcion FROM " + bd1 + ".Options_Menu WHERE url = 'CargueEmpleados.aspx' AND TipoPortal = 'A'");
                         if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                         {
                             this.lblTitulo.Text = dtDataTable.Rows[0].ItemArray[0].ToString();
@@ -73,25 +75,25 @@ namespace PortalTrabajadores.Portal
                     string cmdmysql; int Registros = 0;
                     Conexion.AbrirCnMysql();
                     //Trunca la tabla Companiastemp antes de insertar los datos
-                    Conexion.EjecutarComando("truncate table trabajadores.companiastemp");
-                    cmdmysql = "LOAD DATA LOCAL INFILE '" + ruta + "companiastemp.txt" + "' INTO TABLE trabajadores.companiastemp fields terminated by '|' ESCAPED BY " + @"'\\'" + " enclosed by '' LINES TERMINATED BY " + "'\\r\\n';";
+                    Conexion.EjecutarComando("truncate table " + bd2 + ".companiastemp");
+                    cmdmysql = "LOAD DATA LOCAL INFILE '" + ruta + "companiastemp.txt" + "' INTO TABLE " + bd2 + ".companiastemp fields terminated by '|' ESCAPED BY " + @"'\\'" + " enclosed by '' LINES TERMINATED BY " + "'\\r\\n';";
                     Registros = Conexion.EjecutarComandoCon(cmdmysql);
 
                     //Trunca la tabla empleadostemp antes de insertar los datos
-                    Conexion.EjecutarComando("truncate table trabajadores.empleadostemp");
-                    cmdmysql = "LOAD DATA LOCAL INFILE '" + ruta + "empleadostemp.txt" + "' INTO TABLE trabajadores.empleadostemp fields terminated by '|' ESCAPED BY " + @"'\\'" + " enclosed by '' LINES TERMINATED BY " + "'\\r\\n';";
+                    Conexion.EjecutarComando("truncate table " + bd2 + ".empleadostemp");
+                    cmdmysql = "LOAD DATA LOCAL INFILE '" + ruta + "empleadostemp.txt" + "' INTO TABLE " + bd2 + ".empleadostemp fields terminated by '|' ESCAPED BY " + @"'\\'" + " enclosed by '' LINES TERMINATED BY " + "'\\r\\n';";
                     Registros = Conexion.EjecutarComandoCon(cmdmysql);
 
                     //Inserta las compañias nuevas en la tabla companias
-                    cmdmysql = "insert into companias select * from trabajadores.companiastemp T where not exists(select 1 from trabajadores.companias C where C.idcompania = T.idcompania and C.Empresas_idEmpresa = T.Empresas_idEmpresa);";
+                    cmdmysql = "insert into companias select * from " + bd2 + ".companiastemp T where not exists(select 1 from trabajadores.companias C where C.idcompania = T.idcompania and C.Empresas_idEmpresa = T.Empresas_idEmpresa);";
                     Registros = Conexion.EjecutarComandoCon(cmdmysql);
 
                     //Inserta los empleados nuevos en la tabla empleados
-                    cmdmysql = "insert into trabajadores.empleados select * from trabajadores.empleadostemp T3 where not exists(select 1 from trabajadores.empleados E where E.id_empleado = T3.Id_Empleado and E.idContrato = T3.idContrato)";
+                    cmdmysql = "insert into " + bd2 + ".empleados select * from trabajadores.empleadostemp T3 where not exists(select 1 from trabajadores.empleados E where E.id_empleado = T3.Id_Empleado and E.idContrato = T3.idContrato)";
                     int RegistrosEmple = Conexion.EjecutarComandoCon(cmdmysql);
 
                     //Actualiza la informacion de los empleados 
-                    cmdmysql = "update trabajadores.empleados E, trabajadores.empleadostemp T Set E.Activo_Empleado = T.Estado_Contrato_Empleado, E.Outsourcing = T.Outsourcing, E.Companias_idCompania = T.Companias_idCompania, E.Estado_Contrato_Empleado = T.Estado_Contrato_Empleado,E.Fecha_terminacion_Empleado = T.Fecha_terminacion_Empleado,E.salario_empleado = T.salario_empleado, E.Nombre_Cargo_Empleado = T.Nombre_Cargo_Empleado where T.Id_Empleado = E.Id_Empleado and T.idContrato = E.idContrato and T.TipoId_empleado = E.TipoId_empleado and T.Companias_idEmpresa =  E.Companias_idEmpresa;";
+                    cmdmysql = "update " + bd2 + ".empleados E, trabajadores.empleadostemp T Set E.Activo_Empleado = T.Estado_Contrato_Empleado, E.Outsourcing = T.Outsourcing, E.Companias_idCompania = T.Companias_idCompania, E.Estado_Contrato_Empleado = T.Estado_Contrato_Empleado,E.Fecha_terminacion_Empleado = T.Fecha_terminacion_Empleado,E.salario_empleado = T.salario_empleado, E.Nombre_Cargo_Empleado = T.Nombre_Cargo_Empleado where T.Id_Empleado = E.Id_Empleado and T.idContrato = E.idContrato and T.TipoId_empleado = E.TipoId_empleado and T.Companias_idEmpresa =  E.Companias_idEmpresa;";
                     int RegistrosAct = Conexion.EjecutarComandoCon(cmdmysql);
 
                     MensajeError("Se insertaron " + RegistrosEmple + " Empleados Nuevos en la Base de Datos para el Cargue de Empleados. Actualizados: " + RegistrosAct);
