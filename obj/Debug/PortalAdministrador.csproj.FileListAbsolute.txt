@@ -55,3 +55,11 @@ D:\SUMI\ProyectoGIT\AdministracionPortales\bin\es\Microsoft.QualityTools.Testing
 D:\SUMI\ProyectoGIT\AdministracionPortales\obj\Debug\PortalAdministrador.csproj.ResolveComReference.cache
 D:\SUMI\ProyectoGIT\AdministracionPortales\obj\Debug\PortalTrabajadores.dll
 D:\SUMI\ProyectoGIT\AdministracionPortales\obj\Debug\PortalTrabajadores.pdb
+D:\PortalAdmin\bin\PortalTrabajadores.dll.config
+D:\PortalAdmin\bin\PortalTrabajadores.dll
+D:\PortalAdmin\bin\PortalTrabajadores.pdb
+D:\PortalAdmin\bin\itextsharp.dll
+D:\PortalAdmin\bin\itextsharp.xml
+D:\PortalAdmin\obj\Debug\PortalAdministrador.csproj.ResolveComReference.cache
+D:\PortalAdmin\obj\Debug\PortalTrabajadores.dll
+D:\PortalAdmin\obj\Debug\PortalTrabajadores.pdb

@@ -49,3 +49,12 @@ D:\Sumi\AdministracionPortales\obj\Release\PortalAdministrador.csprojResolveAsse
 D:\Sumi\AdministracionPortales\obj\Release\PortalAdministrador.csproj.ResolveComReference.cache
 D:\Sumi\AdministracionPortales\obj\Release\PortalTrabajadores.dll
 D:\Sumi\AdministracionPortales\obj\Release\PortalTrabajadores.pdb
+D:\PortalAdmin\bin\PortalTrabajadores.dll.config
+D:\PortalAdmin\bin\PortalTrabajadores.dll
+D:\PortalAdmin\bin\PortalTrabajadores.pdb
+D:\PortalAdmin\bin\itextsharp.dll
+D:\PortalAdmin\bin\itextsharp.xml
+D:\PortalAdmin\obj\Release\PortalAdministrador.csprojResolveAssemblyReference.cache
+D:\PortalAdmin\obj\Release\PortalAdministrador.csproj.ResolveComReference.cache
+D:\PortalAdmin\obj\Release\PortalTrabajadores.dll
+D:\PortalAdmin\obj\Release\PortalTrabajadores.pdb

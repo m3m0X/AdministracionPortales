@@ -15,8 +15,8 @@
     <form id="form1" runat="server">
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" />
         <header id="loginHeader">
-			<h1>Servicio en línea - Administrador</h1>
-		</header>
+            <h1>Servicio en línea - Administrador</h1>
+        </header>
         <div class="Capa1">
             <div id="titulologin">Inicio de Sesión</div>
             <div id="texto">
@@ -24,7 +24,7 @@
             </div>
             <div id="Capa2">
                 <asp:TextBox ID="txtuser" runat="server" MaxLength="20" CssClass="MarcaAgua"
-                     ToolTip="Usuario" placeholder="Introduzca el usuario"  onkeypress="return ValidaSoloNumeros(event)"></asp:TextBox>
+                    ToolTip="Usuario" placeholder="Introduzca el usuario" onkeypress="return ValidaSoloNumeros(event)"></asp:TextBox>
                 <br />
                 <br />
                 <asp:TextBox ID="txtPass" runat="server" MaxLength="20" CssClass="MarcaAgua" onkeypress="hideOnKeyPress(); return true;"
@@ -32,15 +32,15 @@
                 <br />
                 <br />
                 <div id="BotonPantalla">
-                    <asp:Button ID="btnlogin" CssClass="botonimagen" runat="server" Text="Autenticar" 
+                    <asp:Button ID="btnlogin" CssClass="botonimagen" runat="server" Text="Autenticar"
                         OnClick="btnlogin_Click" ValidationGroup="Submit"></asp:Button>
                 </div>
                 <br />
                 <div class="MenuVinculos">
-                    <asp:LinkButton ID="btnPass" CssClass="botonimagen" runat="server" Text="Recuperar Contraseña" 
-                    OnClick="btnPass_Click"></asp:LinkButton>
+                    <asp:LinkButton ID="btnPass" CssClass="botonimagen" runat="server" Text="Recuperar Contraseña"
+                        OnClick="btnPass_Click"></asp:LinkButton>
                 </div>
-                <div class="MensajesPantalla">                        
+                <div class="MensajesPantalla">
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                         ErrorMessage="*Digite Usuario" ControlToValidate="txtuser"
                         SetFocusOnError="true" ValidationGroup="Submit"

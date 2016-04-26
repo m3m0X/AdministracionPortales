@@ -89,7 +89,7 @@ namespace PortalTrabajadores.Portal
                     Registros = Conexion.EjecutarComandoCon(cmdmysql);
 
                     //Inserta los empleados nuevos en la tabla empleados
-                    cmdmysql = "insert into " + bd2 + ".empleados select * from trabajadores.empleadostemp T3 where not exists(select 1 from trabajadores.empleados E where E.id_empleado = T3.Id_Empleado and E.idContrato = T3.idContrato)";
+                    cmdmysql = "insert into " + bd2 + ".empleados select * from trabajadores.empleadostemp T3 where not exists(select 1 from trabajadores.empleados E where E.id_empleado = T3.Id_Empleado and E.idContrato = T3.idContrato and E.companias_idempresa = T3.companias_idempresa)";
                     int RegistrosEmple = Conexion.EjecutarComandoCon(cmdmysql);
 
                     //Actualiza la informacion de los empleados 

@@ -120,6 +120,7 @@
     <Content Include="fonts\icomoon.woff" />
     <Content Include="Portal\PaginaMaestra.Master" />
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\admin.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\PerfilTrabajador.pubxml" />
     <Content Include="Web.config">
