@@ -97,6 +97,8 @@
     <Content Include="Img\Nombre.png" />
     <Content Include="fonts\icomoon.svg" />
     <Content Include="Img\fondo_body.jpg" />
+    <Content Include="Img\off.png" />
+    <Content Include="Img\on.png" />
     <Content Include="Img\pdf.gif" />
     <Content Include="Img\printButton.png" />
     <Content Include="Js\funciones.js" />
@@ -114,6 +116,7 @@
     <Content Include="Portal\ModificarDatosSS.aspx" />
     <Content Include="Portal\ModificarDatosAE.aspx" />
     <Content Include="Portal\ModificarDatosST.aspx" />
+    <Content Include="Portal\Modulos.aspx" />
     <Content Include="Portal\PrimeraContrasena.aspx" />
     <Content Include="fonts\icomoon.eot" />
     <Content Include="fonts\icomoon.ttf" />
@@ -141,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\CnMysql.cs" />
+    <Compile Include="Class\ConsultasGenerales.cs" />
     <Compile Include="Class\LlenadoDropBox.cs" />
     <Compile Include="Class\ManejoLog.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -246,6 +250,13 @@
     </Compile>
     <Compile Include="Portal\ModificarDatosST.aspx.designer.cs">
       <DependentUpon>ModificarDatosST.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\Modulos.aspx.cs">
+      <DependentUpon>Modulos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\Modulos.aspx.designer.cs">
+      <DependentUpon>Modulos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\PaginaMaestra.Master.cs">
       <DependentUpon>PaginaMaestra.Master</DependentUpon>

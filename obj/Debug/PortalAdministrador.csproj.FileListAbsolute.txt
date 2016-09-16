@@ -35,16 +35,6 @@ D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\obj\Debug\Portal
 D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\obj\Debug\PortalTrabajadores.dll
 D:\Proyectos\Sumi\AdministracionPortales\AdministracionPortales\obj\Debug\PortalTrabajadores.pdb
 C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalAdministracion\AdministracionPortales\obj\Debug\PortalAdministrador.csprojResolveAssemblyReference.cache
-D:\Sumi\AdministracionPortales\bin\PortalTrabajadores.dll.config
-D:\Sumi\AdministracionPortales\bin\PortalTrabajadores.dll
-D:\Sumi\AdministracionPortales\bin\PortalTrabajadores.pdb
-D:\Sumi\AdministracionPortales\bin\itextsharp.dll
-D:\Sumi\AdministracionPortales\bin\Microsoft.QualityTools.Testing.Fakes.dll
-D:\Sumi\AdministracionPortales\bin\itextsharp.xml
-D:\Sumi\AdministracionPortales\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
-D:\Sumi\AdministracionPortales\obj\Debug\PortalAdministrador.csproj.ResolveComReference.cache
-D:\Sumi\AdministracionPortales\obj\Debug\PortalTrabajadores.dll
-D:\Sumi\AdministracionPortales\obj\Debug\PortalTrabajadores.pdb
 D:\SUMI\ProyectoGIT\AdministracionPortales\bin\PortalTrabajadores.dll.config
 D:\SUMI\ProyectoGIT\AdministracionPortales\bin\PortalTrabajadores.dll
 D:\SUMI\ProyectoGIT\AdministracionPortales\bin\PortalTrabajadores.pdb
@@ -64,3 +54,14 @@ D:\PortalAdmin\obj\Debug\PortalAdministrador.csproj.ResolveComReference.cache
 D:\PortalAdmin\obj\Debug\PortalTrabajadores.dll
 D:\PortalAdmin\obj\Debug\PortalTrabajadores.pdb
 D:\PortalAdmin\obj\Debug\PortalAdministrador.csprojResolveAssemblyReference.cache
+D:\Sumi\AdministracionPortales\obj\Debug\PortalAdministrador.csprojResolveAssemblyReference.cache
+D:\Sumi\AdministracionPortales\obj\Debug\PortalAdministrador.csproj.ResolveComReference.cache
+D:\Sumi\AdministracionPortales\bin\PortalTrabajadores.dll.config
+D:\Sumi\AdministracionPortales\bin\PortalTrabajadores.dll
+D:\Sumi\AdministracionPortales\bin\PortalTrabajadores.pdb
+D:\Sumi\AdministracionPortales\bin\itextsharp.dll
+D:\Sumi\AdministracionPortales\bin\Microsoft.QualityTools.Testing.Fakes.dll
+D:\Sumi\AdministracionPortales\bin\itextsharp.xml
+D:\Sumi\AdministracionPortales\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+D:\Sumi\AdministracionPortales\obj\Debug\PortalTrabajadores.dll
+D:\Sumi\AdministracionPortales\obj\Debug\PortalTrabajadores.pdb
