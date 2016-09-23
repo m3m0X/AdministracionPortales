@@ -87,7 +87,7 @@ namespace PortalTrabajadores.Portal
             if (valor)
             {
                 CnMysql Conexion = new CnMysql(Cn);
-                MySqlCommand scSqlCommand = new MySqlCommand("SELECT idOption_Menu, descripcion, idparent_option_Menu, url FROM " + bd1 + ".Options_Menu WHERE Tipoportal = 'A'", Conexion.ObtenerCnMysql());
+                MySqlCommand scSqlCommand = new MySqlCommand("SELECT idOption_Menu, descripcion, idparent_option_Menu, url FROM " + bd1 + ".Options_Menu WHERE Tipoportal = 'A' ORDER BY Orden", Conexion.ObtenerCnMysql());
                 MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                 DataSet dsDataSet = new DataSet();
                 DataTable dtDataTable = null;
