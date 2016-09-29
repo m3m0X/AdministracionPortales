@@ -100,13 +100,11 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
-                <asp:Button ID="BtnGuardar" runat="server" Text="Guardar"/>
             </div>
         </ContentTemplate>
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="BtnBuscar" EventName="Click" />
             <asp:AsyncPostBackTrigger ControlID="BtnProyectos" EventName="Click" />
-            <asp:AsyncPostBackTrigger ControlID="BtnGuardar" EventName="Click" />
         </Triggers>
     </asp:UpdatePanel>
 </asp:Content>

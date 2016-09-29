@@ -35,7 +35,7 @@ namespace PortalTrabajadores.Portal
 
                 if (!IsPostBack)
                 {
-                    MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM " + bd1 + ".Options_Menu WHERE url = 'ModificarDatosAE.aspx' and Tipoportal = 'A'", Conexion.ObtenerCnMysql());
+                    MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM " + bd1 + ".Options_Menu WHERE url = 'Modulos.aspx' and Tipoportal = 'A'", Conexion.ObtenerCnMysql());
                     MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                     DataSet dsDataSet = new DataSet();
                     DataTable dtDataTable = null;
@@ -63,6 +63,9 @@ namespace PortalTrabajadores.Portal
             UpdatePanel3.Update();
         }
 
+        /* ****************************************************************************/
+        /* Metodo que limpia los mensajes
+        /* ****************************************************************************/
         public void LimpiarMensajes()
         {
             LblMsj.Text = string.Empty;
@@ -72,45 +75,57 @@ namespace PortalTrabajadores.Portal
 
         #endregion
 
+        /* ****************************************************************************/
+        /* Busca el nit en BD
+        /* ****************************************************************************/
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
             this.LimpiarMensajes();
 
             try
             {
-                this.txtNit.Focus();
-
-                LlenadoDropBox utilLlenar = new LlenadoDropBox();
-                string command = "SELECT idCompania, Descripcion_compania FROM " + bd2 +
-                                 ".companias where Empresas_idempresa = '" + this.ddlEmpresa.SelectedItem.Value +
-                                 "' and activo_compania = 1 and Terceros_Nit_Tercero =" + this.txtNit.Text;
-
-                DataTable datos = utilLlenar.LoadTipoID(command);
-
-                if (datos != null)
+                if (this.txtNit.Text != string.Empty)
                 {
-                    this.DropListProyecto.Items.Clear();
-                    this.DropListProyecto.DataSource = utilLlenar.LoadTipoID(command);
-                    this.DropListProyecto.DataTextField = "Descripcion_compania";
-                    this.DropListProyecto.DataValueField = "idCompania";
-                    this.DropListProyecto.DataBind();
+                    this.txtNit.Focus();
 
-                    this.Container_UpdatePanel2.Visible = true;
-                    this.UpdatePanel1.Update();
-                    this.txtNit.Enabled = false;
-                    this.ddlEmpresa.Enabled = false;
-                    this.BtnBuscar.Enabled = false;
-                    this.BtnRestablecer.Enabled = true;
+                    LlenadoDropBox utilLlenar = new LlenadoDropBox();
+                    string command = "SELECT idCompania, " +
+                                     "if (Descripcion_compania2 != '' AND Descripcion_Compania2 != 'NA', " +
+                                     "Descripcion_Compania2, Descripcion_compania) as Descripcion FROM " + bd2 +
+                                     ".companias where Empresas_idempresa = '" + this.ddlEmpresa.SelectedItem.Value +
+                                     "' and activo_compania = 1 and Terceros_Nit_Tercero =" + this.txtNit.Text;
+
+                    DataTable datos = utilLlenar.LoadTipoID(command);
+
+                    if (datos != null)
+                    {
+                        this.DropListProyecto.Items.Clear();
+                        this.DropListProyecto.DataSource = utilLlenar.LoadTipoID(command);
+                        this.DropListProyecto.DataTextField = "Descripcion";
+                        this.DropListProyecto.DataValueField = "idCompania";
+                        this.DropListProyecto.DataBind();
+
+                        this.Container_UpdatePanel2.Visible = true;
+                        this.UpdatePanel1.Update();
+                        this.txtNit.Enabled = false;
+                        this.ddlEmpresa.Enabled = false;
+                        this.BtnBuscar.Enabled = false;
+                        this.BtnRestablecer.Enabled = true;
+                    }
+                    else
+                    {
+                        this.MensajeError("No se han encontrado resultados.");
+                        this.Container_UpdatePanel2.Visible = false;
+                        this.UpdatePanel1.Update();
+                        this.txtNit.Enabled = true;
+                        this.ddlEmpresa.Enabled = true;
+                        this.BtnBuscar.Enabled = true;
+                        this.BtnRestablecer.Enabled = false;
+                    }
                 }
                 else
                 {
-                    this.MensajeError("No se han encontrado resultados.");
-                    this.Container_UpdatePanel2.Visible = false;
-                    this.UpdatePanel1.Update();
-                    this.txtNit.Enabled = true;
-                    this.ddlEmpresa.Enabled = true;
-                    this.BtnBuscar.Enabled = true;
-                    this.BtnRestablecer.Enabled = false;
+                    this.MensajeError("Debe ingresar un nit.");
                 }
             }
             catch (Exception E)
@@ -119,6 +134,9 @@ namespace PortalTrabajadores.Portal
             }
         }
 
+        /* ****************************************************************************/
+        /* Reestablece el formulario
+        /* ****************************************************************************/
         protected void BtnRestablecer_Click(object sender, EventArgs e)
         {
             this.LimpiarMensajes();
@@ -126,17 +144,24 @@ namespace PortalTrabajadores.Portal
             this.Container_UpdatePanel3.Visible = false;
             this.UpdatePanel1.Update();
             this.txtNit.Enabled = true;
+            this.txtNit.Text = string.Empty;
             this.ddlEmpresa.Enabled = true;
             this.BtnBuscar.Enabled = true;
             this.BtnRestablecer.Enabled = false;
         }
 
+        /* ****************************************************************************/
+        /* Carga los proyectos
+        /* ****************************************************************************/
         protected void BtnProyectos_Click(object sender, EventArgs e)
         {
             this.LimpiarMensajes();
             this.CargarProyectos();
         }
 
+        /* ****************************************************************************/
+        /* Carga la grilla con las opciones de activar y desactivar
+        /* ****************************************************************************/
         protected void gvModulosActivos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             this.LimpiarMensajes();
@@ -215,6 +240,9 @@ namespace PortalTrabajadores.Portal
             }
         }
 
+        /* ****************************************************************************/
+        /* Metodo se ejecuta al cargar los datos en la grilla
+        /* ****************************************************************************/
         protected void gvModulosActivos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             this.LimpiarMensajes();
@@ -239,6 +267,9 @@ namespace PortalTrabajadores.Portal
             }
         }
 
+        /* ****************************************************************************/
+        /* Carga los proyectos en el ddlist
+        /* ****************************************************************************/
         private void CargarProyectos()
         {
             try
