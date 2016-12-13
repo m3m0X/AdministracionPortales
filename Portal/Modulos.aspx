@@ -61,24 +61,7 @@
                 </table>
             </div>
             <div id="Container_UpdatePanel2" runat="server" visible ="false">
-                <table id="TablaDatos">
-                    <tr>
-                        <th colspan="2">Seleccione el Proyecto</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:DropDownList ID="DropListProyecto" runat="server" Height="22px" ></asp:DropDownList>
-                        </td>
-                    </tr>
-                    <tr>
-                         <td>
-                            <asp:Button ID="BtnProyectos" runat="server" 
-                                Text="Seleccionar" OnClick="BtnProyectos_Click"/>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div id="Container_UpdatePanel3" runat="server" visible ="false">
+                <asp:Label ID="lblRazonSocial" runat="server" Text="Label"></asp:Label>
                 <br />
                 <asp:GridView ID="gvModulosActivos" runat="server" 
                     AutoGenerateColumns="False" OnRowDataBound="gvModulosActivos_RowDataBound"
@@ -104,7 +87,6 @@
         </ContentTemplate>
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="BtnBuscar" EventName="Click" />
-            <asp:AsyncPostBackTrigger ControlID="BtnProyectos" EventName="Click" />
         </Triggers>
     </asp:UpdatePanel>
 </asp:Content>

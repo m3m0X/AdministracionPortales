@@ -11,11 +11,58 @@ namespace PortalTrabajadores.Class
 {
     public class ConsultasGenerales
     {
-        string CnTrabajadores = ConfigurationManager.ConnectionStrings["trabajadoresConnectionString"].ConnectionString.ToString();
+        string CnBasica = ConfigurationManager.ConnectionStrings["basicaConnectionString"].ConnectionString.ToString();
+        string CnTrabajadores = ConfigurationManager.ConnectionStrings["trabajadoresConnectionString"].ConnectionString.ToString();        
         string bdBasica = ConfigurationManager.AppSettings["BD1"].ToString();
         string bdTrabajadores = ConfigurationManager.AppSettings["BD2"].ToString();
 
-        //#region Generales
+        #region Generales
+
+        public DataTable ConsultarTerceros(string tercero, string idEmpresa)
+        {
+            CnMysql Conexion = new CnMysql(CnTrabajadores);
+
+            try
+            {
+                Conexion.AbrirCnMysql();
+                string consulta;
+
+                consulta = "SELECT com.idCompania, com.Terceros_Nit_Tercero, " +
+                           "IF(com.Descripcion_compania2 != '' AND com.Descripcion_Compania2 != 'NA', " +
+                           "com.Descripcion_Compania2, com.Descripcion_compania) AS Descripcion, " +
+                           "ter.Razon_social FROM " + bdTrabajadores + ".companias com INNER JOIN " +
+                           bdTrabajadores + ".terceros ter ON com.Terceros_Nit_Tercero = ter.Nit_Tercero " +
+                           "WHERE com.Empresas_idempresa = '" + idEmpresa +"' AND com.activo_compania = 1 " +
+                           "AND com.Terceros_Nit_Tercero = " + tercero + ";";
+
+                MySqlCommand cmd = new MySqlCommand(consulta, Conexion.ObtenerCnMysql());
+                MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
+                DataSet dsDataSet = new DataSet();
+                DataTable dtDataTable = null;
+
+                sdaSqlDataAdapter.Fill(dsDataSet);
+                dtDataTable = dsDataSet.Tables[0];
+
+                if (dtDataTable != null && dtDataTable.Rows.Count > 0)
+                {
+                    return dtDataTable;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Conexion.CerrarCnMysql();
+            }
+        }
+
+        #endregion
 
         ///// <summary>
         ///// Devuelve el inicio de sesion

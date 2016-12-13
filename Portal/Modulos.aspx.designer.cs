@@ -103,31 +103,13 @@ namespace PortalTrabajadores.Portal {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Container_UpdatePanel2;
         
         /// <summary>
-        /// Control DropListProyecto.
+        /// Control lblRazonSocial.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropListProyecto;
-        
-        /// <summary>
-        /// Control BtnProyectos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnProyectos;
-        
-        /// <summary>
-        /// Control Container_UpdatePanel3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Container_UpdatePanel3;
+        protected global::System.Web.UI.WebControls.Label lblRazonSocial;
         
         /// <summary>
         /// Control gvModulosActivos.

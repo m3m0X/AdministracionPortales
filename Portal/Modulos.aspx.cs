@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using PortalTrabajadores.Class;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,6 +17,7 @@ namespace PortalTrabajadores.Portal
         string Cn2 = ConfigurationManager.ConnectionStrings["trabajadoresConnectionString"].ConnectionString.ToString();
         string bd1 = ConfigurationManager.AppSettings["BD1"].ToString();
         string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
+        ConsultasGenerales consultas;
         MySqlConnection MySqlCn;
 
         #region Metodo Page Load
@@ -31,6 +33,7 @@ namespace PortalTrabajadores.Portal
             }
             else
             {
+                consultas = new ConsultasGenerales();
                 CnMysql Conexion = new CnMysql(Cn1);
 
                 if (!IsPostBack)
@@ -88,23 +91,14 @@ namespace PortalTrabajadores.Portal
                 {
                     this.txtNit.Focus();
 
-                    LlenadoDropBox utilLlenar = new LlenadoDropBox();
-                    string command = "SELECT idCompania, " +
-                                     "if (Descripcion_compania2 != '' AND Descripcion_Compania2 != 'NA', " +
-                                     "Descripcion_Compania2, Descripcion_compania) as Descripcion FROM " + bd2 +
-                                     ".companias where Empresas_idempresa = '" + this.ddlEmpresa.SelectedItem.Value +
-                                     "' and activo_compania = 1 and Terceros_Nit_Tercero =" + this.txtNit.Text;
+                    DataTable dtDatos = consultas.ConsultarTerceros(txtNit.Text, ddlEmpresa.SelectedValue);
 
-                    DataTable datos = utilLlenar.LoadTipoID(command);
-
-                    if (datos != null)
+                    if (dtDatos != null)
                     {
-                        this.DropListProyecto.Items.Clear();
-                        this.DropListProyecto.DataSource = utilLlenar.LoadTipoID(command);
-                        this.DropListProyecto.DataTextField = "Descripcion";
-                        this.DropListProyecto.DataValueField = "idCompania";
-                        this.DropListProyecto.DataBind();
+                        lblRazonSocial.Text = dtDatos.Rows[0]["Razon_social"].ToString();
 
+                        this.CargarModulos(dtDatos.Rows[0]["Terceros_Nit_Tercero"].ToString());
+                        
                         this.Container_UpdatePanel2.Visible = true;
                         this.UpdatePanel1.Update();
                         this.txtNit.Enabled = false;
@@ -141,7 +135,6 @@ namespace PortalTrabajadores.Portal
         {
             this.LimpiarMensajes();
             this.Container_UpdatePanel2.Visible = false;
-            this.Container_UpdatePanel3.Visible = false;
             this.UpdatePanel1.Update();
             this.txtNit.Enabled = true;
             this.txtNit.Text = string.Empty;
@@ -149,16 +142,7 @@ namespace PortalTrabajadores.Portal
             this.BtnBuscar.Enabled = true;
             this.BtnRestablecer.Enabled = false;
         }
-
-        /* ****************************************************************************/
-        /* Carga los proyectos
-        /* ****************************************************************************/
-        protected void BtnProyectos_Click(object sender, EventArgs e)
-        {
-            this.LimpiarMensajes();
-            this.CargarProyectos();
-        }
-
+        
         /* ****************************************************************************/
         /* Carga la grilla con las opciones de activar y desactivar
         /* ****************************************************************************/
@@ -183,7 +167,6 @@ namespace PortalTrabajadores.Portal
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@idmodulo", idmod);
                         cmd.Parameters.AddWithValue("@idtercero", this.txtNit.Text);
-                        cmd.Parameters.AddWithValue("@idcompania", DropListProyecto.SelectedItem.Value);
                         cmd.Parameters.AddWithValue("@idempresa", ddlEmpresa.SelectedItem.Value);
 
                         // Crea un parametro de salida para el SP
@@ -199,7 +182,7 @@ namespace PortalTrabajadores.Portal
 
                         if (res > 0)
                         {
-                            this.CargarProyectos();
+                            this.CargarModulos(this.txtNit.Text);
                         }
                         else 
                         {
@@ -225,7 +208,7 @@ namespace PortalTrabajadores.Portal
 
                         if (res == 1)
                         {
-                            this.CargarProyectos();
+                            this.CargarModulos(this.txtNit.Text);
                         }
                         else
                         {
@@ -270,7 +253,7 @@ namespace PortalTrabajadores.Portal
         /* ****************************************************************************/
         /* Carga los proyectos en el ddlist
         /* ****************************************************************************/
-        private void CargarProyectos()
+        private void CargarModulos(string idTercero)
         {
             try
             {
@@ -281,7 +264,7 @@ namespace PortalTrabajadores.Portal
                 MySqlCommand scSqlCommand;
                 scSqlCommand = new MySqlCommand("sp_ConsultarModulosCompania", MySqlCn);
                 scSqlCommand.CommandType = CommandType.StoredProcedure;
-                scSqlCommand.Parameters.AddWithValue("@idCompania", DropListProyecto.SelectedItem.Value);
+                scSqlCommand.Parameters.AddWithValue("@idTercero", idTercero);
                 scSqlCommand.Parameters.AddWithValue("@idEmpresa", ddlEmpresa.SelectedItem.Value);
 
                 MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
@@ -298,7 +281,6 @@ namespace PortalTrabajadores.Portal
                 }
 
                 this.gvModulosActivos.DataBind();
-                this.Container_UpdatePanel3.Visible = true;
                 this.UpdatePanel1.Update();
             }
             catch (Exception ex)
