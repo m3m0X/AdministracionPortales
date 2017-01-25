@@ -91,7 +91,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>02/17/2014 13:47:36</publishTime>
     </File>
     <File Include="bin/PortalTrabajadores.dll">
-      <publishTime>12/04/2016 15:32:47</publishTime>
+      <publishTime>01/22/2017 10:21:44</publishTime>
     </File>
     <File Include="bin/pt/AjaxControlToolkit.resources.dll">
       <publishTime>02/17/2014 13:47:36</publishTime>
@@ -127,7 +127,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/06/2016 12:53:14</publishTime>
     </File>
     <File Include="CSS/Loading.css">
-      <publishTime>03/06/2016 12:53:14</publishTime>
+      <publishTime>01/22/2017 10:19:53</publishTime>
     </File>
     <File Include="CSS/login.css">
       <publishTime>03/06/2016 12:53:14</publishTime>
@@ -263,6 +263,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="Portal/AgregarCliente.aspx">
       <publishTime>03/06/2016 12:53:14</publishTime>
+    </File>
+    <File Include="Portal/AjusteSumitemp.aspx">
+      <publishTime>01/22/2017 10:20:34</publishTime>
     </File>
     <File Include="Portal/CambioContrasena.aspx">
       <publishTime>10/01/2014 23:07:36</publishTime>
@@ -415,7 +418,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/30/2014 16:00:54</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/20/2016 22:47:54</publishTime>
+      <publishTime>01/22/2017 09:59:27</publishTime>
     </File>
   </ItemGroup>
 </Project>

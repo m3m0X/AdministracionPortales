@@ -103,6 +103,7 @@
     <Content Include="Img\printButton.png" />
     <Content Include="Js\funciones.js" />
     <Content Include="Portal\Actualizadatos.aspx" />
+    <Content Include="Portal\AjusteSumitemp.aspx" />
     <Content Include="Portal\ModificarProyecto.aspx" />
     <Content Include="Portal\CambioContrasenaSS.aspx" />
     <Content Include="Portal\CambioContrasenaAE.aspx" />
@@ -159,6 +160,13 @@
     </Compile>
     <Compile Include="Portal\Actualizadatos.aspx.designer.cs">
       <DependentUpon>Actualizadatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\AjusteSumitemp.aspx.cs">
+      <DependentUpon>AjusteSumitemp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\AjusteSumitemp.aspx.designer.cs">
+      <DependentUpon>AjusteSumitemp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\ModificarProyecto.aspx.cs">
       <DependentUpon>ModificarProyecto.aspx</DependentUpon>

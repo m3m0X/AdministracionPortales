@@ -61,6 +61,70 @@ namespace PortalTrabajadores.Class
                 Conexion.CerrarCnMysql();
             }
         }
+        
+        public bool ConsultarCargosTrabajador(string proyecto)
+        {
+            CnMysql Conexion = new CnMysql(CnTrabajadores);
+
+            try
+            {
+                Conexion.AbrirCnMysql();
+                string consulta;
+
+                consulta = "SELECT * FROM " + bdTrabajadores + ".empleados as emp " +
+                           "INNER JOIN " + bdTrabajadores + ".companias as comp " +
+                           "ON comp.idCompania = emp.Companias_idCompania " +
+                           "WHERE comp.Empresas_idempresa = 'ST' " + 
+                           "AND comp.activo_compania = 1 " + 
+                           "AND comp.Terceros_Nit_Tercero = 8002374329;";
+
+                MySqlCommand cmd = new MySqlCommand(consulta, Conexion.ObtenerCnMysql());
+                MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
+                DataSet dsDataSet = new DataSet();
+                DataTable dtDataTable = null;
+
+                sdaSqlDataAdapter.Fill(dsDataSet);
+                dtDataTable = dsDataSet.Tables[0];
+
+                if (dtDataTable != null && dtDataTable.Rows.Count > 0)
+                {
+                    for (int i = 0; i < dtDataTable.Rows.Count; i++)
+                    {
+                        MySqlCommand cmd2 = new MySqlCommand("sp_ActualizarEmpST", Conexion.ObtenerCnMysql());
+                        cmd2.CommandType = CommandType.StoredProcedure;
+                        cmd2.Parameters.AddWithValue("@proyecto", proyecto);
+                        cmd2.Parameters.AddWithValue("@idEmpleado", dtDataTable.Rows[i]["Id_Empleado"].ToString());
+                        cmd2.Parameters.AddWithValue("@idContrato", dtDataTable.Rows[i]["idContrato"].ToString());
+                        cmd2.Parameters.AddWithValue("@idEmpresa", dtDataTable.Rows[i]["Companias_idEmpresa"].ToString());
+
+                        MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+
+                        cmd2.Parameters.Add(outputIdParam);
+                        cmd2.ExecuteNonQuery();
+
+                        //Almacena la respuesta de la variable de retorno del SP
+                        int res = int.Parse(outputIdParam.Value.ToString());
+                    }
+
+                    return true; 
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Conexion.CerrarCnMysql();
+            }
+        }
 
         #endregion
 
